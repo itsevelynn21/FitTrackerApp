@@ -1,8 +1,10 @@
-package com.gymapp.main;
+package com.gymapp.main.activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.gymapp.main.R;
 
 public class MainActivity extends AppCompatActivity {
 

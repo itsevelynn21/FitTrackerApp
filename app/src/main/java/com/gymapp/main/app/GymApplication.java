@@ -8,6 +8,10 @@ public class GymApplication extends Application {
 
     private final DayTrackManager dayTrackManager;
 
+    public GymApplication(){
+        this.dayTrackManager = null;
+    }
+
     public GymApplication(DayTrackManager dayTrackManager){
         this.dayTrackManager = dayTrackManager;
     }

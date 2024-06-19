@@ -23,6 +23,7 @@ public class DayTrackDAO implements GenDAO<LocalDate, DayTrack> {
     public DayTrackDAO(SQLiteOpenHelper sqLiteOpenHelper){
         this.sqLiteOpenHelper = sqLiteOpenHelper;
     }
+
     @Override
     public void save(DayTrack dayTrack) {
         ContentValues values = new ContentValues();

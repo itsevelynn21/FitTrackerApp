@@ -26,11 +26,11 @@ public class DayTrackDAO implements GenDAO<LocalDate, DayTrack> {
     @Override
     public void save(DayTrack dayTrack) {
         ContentValues values = new ContentValues();
-        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_CALORIES, dayTrack.getCalories());
-        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_WATER, dayTrack.getWater());
-        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_NOTE, dayTrack.getNote());
-        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_GYM_STATUS, dayTrack.getGymStatus().name());
-        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_DATE, DateFormats.localDateString(dayTrack.getLocalDate()));
+        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_CALORIES, dayTrack.calories());
+        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_WATER, dayTrack.water());
+        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_NOTE, dayTrack.note());
+        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_GYM_STATUS, dayTrack.gymStatus().name());
+        values.put(TrackerContract.DayTrackEntry.COLUMN_NAME_DATE, DateFormats.localDateString(dayTrack.localDate()));
 
         try(SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase()){
             db.insertWithOnConflict(TrackerContract.DayTrackEntry.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
@@ -43,7 +43,7 @@ public class DayTrackDAO implements GenDAO<LocalDate, DayTrack> {
     public void remove(DayTrack dayTrack) {
 
         String selection = "date = ?";
-        String[] selectionArgs = {DateFormats.localDateString(dayTrack.getLocalDate())};
+        String[] selectionArgs = {DateFormats.localDateString(dayTrack.localDate())};
 
         try(SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase()){
             db.delete(TrackerContract.DayTrackEntry.TABLE_NAME,selection,selectionArgs);

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.gymapp.main.exceptions.IllegalDayTrackModificationException;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
@@ -13,17 +14,19 @@ public class DayTrack {
     private int calories;
     private int water;
     private String note;
+    private GymStatus gymStatus;
     private final LocalDate localDate;
 
-    public DayTrack(int calories, int water, @Nullable String note, LocalDate localDate){
+    public DayTrack(int calories, int water, @Nullable String note, @NotNull GymStatus gymStatus,@NotNull LocalDate localDate){
         this.calories = calories;
         this.water = water;
         this.note = note;
+        this.gymStatus = gymStatus;
         this.localDate = localDate;
     }
 
-    public DayTrack(LocalDate localDate){
-        this.localDate = localDate;
+    public DayTrack(@NotNull LocalDate localDate){
+        this.localDate = localDate; this.gymStatus = GymStatus.NONE;
     }
 
 
@@ -39,15 +42,15 @@ public class DayTrack {
         return note;
     }
 
-    public void update(int addCals, int addWater, @Nullable String setNote) throws IllegalDayTrackModificationException {
-        if(isToday()){
-            this.calories += addCals;
-            this.water += addWater;
-            this.note = setNote;
-        } else {
-            throw new IllegalDayTrackModificationException("DayTrack of past date cannot be modified");
-        }
+    public LocalDate getLocalDate() {
+        return localDate;
     }
+
+    public GymStatus getGymStatus() {
+        return gymStatus;
+    }
+
+
 
     @SuppressLint("NewApi")
     public boolean isToday(){

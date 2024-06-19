@@ -2,18 +2,35 @@ package com.gymapp.main.app;
 
 import android.app.Application;
 
-import com.gymapp.main.managers.DayTrackManager;
+import com.gymapp.main.database.DayTrackDAO;
+import com.gymapp.main.database.DayTrackHelper;
+import com.gymapp.main.database.GenDAO;
+import com.gymapp.main.entities.DayTrack;
+import com.gymapp.main.managers.DayTrackFacade;
+import com.gymapp.main.managers.DayTrackFacadeImpl;
+import com.gymapp.main.repository.Repository;
+import com.gymapp.main.repository.RepositoryImpl;
 
-public class GymApplication extends Application {
+import java.time.LocalDate;
 
-    private final DayTrackManager dayTrackManager;
+public final class GymApplication extends Application {
 
-    public GymApplication(){
-        this.dayTrackManager = null;
+
+    private DayTrackFacade dayTrackFacade;
+
+
+    @Override
+    public void onCreate(){
+        super.onCreate();
+        DayTrackHelper dbHelper = new DayTrackHelper(getApplicationContext());
+        Repository<LocalDate, DayTrack> repository = new RepositoryImpl<>();
+        GenDAO<LocalDate, DayTrack> genDAO = new DayTrackDAO(dbHelper);
+        dayTrackFacade = new DayTrackFacadeImpl(repository,genDAO);
     }
 
-    public GymApplication(DayTrackManager dayTrackManager){
-        this.dayTrackManager = dayTrackManager;
+    public DayTrackFacade getDayTrackFacade(){
+        return dayTrackFacade;
     }
+
 
 }

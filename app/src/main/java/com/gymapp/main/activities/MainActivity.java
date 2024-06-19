@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.gymapp.main.R;
 
-public final class MainActivity extends AppCompatActivity {
+public final class MainActivity extends AbstractActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -64,14 +64,18 @@ public final class DayTrackFacadeImpl implements DayTrackFacade {
 
 
     @SuppressLint("NewApi")
-    private DayTrack getTodayTrack(){
-        return repository.getItem(LocalDate.now());
+    public DayTrack getTodayTrack(){
+        return getDayTrack(LocalDate.now());
     }
 
     @Override
     public DayTrack getDayTrack(LocalDate localDate) {
-        return repository.getItem(localDate);
+        DayTrack dayTrack = repository.getItem(localDate);
+        if(dayTrack == null) return new DayTrack(localDate);
+        else return repository.getItem(localDate);
     }
+
+
 
     private void saveItem(DayTrack dayTrack){
         repository.saveItem(dayTrack.localDate(), dayTrack);

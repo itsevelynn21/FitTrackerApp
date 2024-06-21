@@ -30,6 +30,9 @@ public final class GymApplication extends Application {
         dayTrackFacade = new DayTrackFacadeImpl(repository,genDAO);
         DayChangeHandler.getInstance().start();
         DayChangeHandler.getInstance().addListener(() -> {});
+        dayTrackFacade.todayTrackAddWater(5);
+
+
     }
 
     public DayTrackFacade getDayTrackFacade(){

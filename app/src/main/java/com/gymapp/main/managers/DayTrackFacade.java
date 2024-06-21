@@ -17,5 +17,6 @@ public interface DayTrackFacade {
     void todayTrackWithStatus(@NotNull GymStatus gymStatus);
 
     DayTrack getDayTrack(LocalDate localDate);
+    DayTrack getTodayTrack();
 
 }

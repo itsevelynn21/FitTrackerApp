@@ -19,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity  android:exported="true" android:name="com.gymapp.main.activities.ManageCalsNoteActivity"></activity>
+
     </application>
 
 </manifest>

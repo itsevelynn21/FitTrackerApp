@@ -58,10 +58,11 @@ public final class MainActivity extends AbstractActivity {
         manageCals= findViewById(R.id.manage_cals);
     }
 
-    private void updateUI(){
+    @Override
+    public void updateUI(){
         DayTrack dayTrack = mainActivityViewModel.getDayTrack();
-        waterCounter.setText(String.valueOf(dayTrack.water()));
-        caloriesCounter.setText(String.valueOf(dayTrack.calories()));
+        waterCounter.setText(String.valueOf(dayTrack.water()) + " mL");
+        caloriesCounter.setText(String.valueOf(dayTrack.calories()) + " kcal");
 
         switch (dayTrack.gymStatus()){
             case WENT -> {

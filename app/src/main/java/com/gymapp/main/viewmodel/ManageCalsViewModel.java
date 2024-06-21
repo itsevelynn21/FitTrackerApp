@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import com.gymapp.main.app.GymApplication;
 import com.gymapp.main.entities.DayTrack;
 
-public class ManageCalsViewModel extends AndroidViewModel {
+public final class ManageCalsViewModel extends AndroidViewModel {
 
     private DayTrack dayTrack;
     private GymApplication gymApplication;

@@ -51,7 +51,8 @@ public class ManageCalsNoteActivity extends AbstractActivity{
         waterDisplay = findViewById(R.id.water_counter);
     }
 
-    private void updateUI(){
+    @Override
+    public void updateUI(){
        DayTrack dayTrack = manageCalsViewModel.getDayTrack();
        calsDisplay.setText(dayTrack.calories() + " kcal");
        waterDisplay.setText(dayTrack.water() + " mL");

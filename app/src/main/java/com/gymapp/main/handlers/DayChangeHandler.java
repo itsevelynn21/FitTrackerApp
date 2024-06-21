@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DayChangeHandler {
+public final class DayChangeHandler {
 
     private static DayChangeHandler instance;
     private final Handler handler;
@@ -16,7 +16,6 @@ public class DayChangeHandler {
     private LocalDate currentDate;
     private final List<DayChangeListener> dayChangeListenerList = new ArrayList<>();
 
-    @SuppressLint("NewApi")
     private DayChangeHandler() {
         handler = new Handler(Looper.getMainLooper());
         currentDate = LocalDate.now();

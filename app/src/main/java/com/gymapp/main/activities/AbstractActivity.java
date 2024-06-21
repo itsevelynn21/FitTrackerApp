@@ -20,5 +20,6 @@ public abstract class AbstractActivity extends AppCompatActivity {
         super.onPause();
         isResumedFromBg = true;
     }
-
+    public abstract void updateUI();
 }
+
